@@ -1,0 +1,28 @@
+.RolesScreen {
+    width: 100%;
+    height: 100%;
+    /*noinspection CssInvalidPropertyValue*/
+    height: -webkit-fill-available; /*fix ios mobile browser bug*/
+    min-height: 100vh;
+    /*noinspection CssInvalidPropertyValue*/
+    min-height: -webkit-fill-available; /*fix ios mobile browser bug*/
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-weight: 400;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+.RolesScreen > img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}

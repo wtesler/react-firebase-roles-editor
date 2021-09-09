@@ -1,0 +1,84 @@
+{
+  "name": "react-firebase-roles-editor",
+  "version": "1.0.1",
+  "description": "An editor for firebase-roles. Edit roles from the web. Easily integrate this into your own react website.",
+  "author": "Will Tesler",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wtesler/react-firebase-roles-editor.git"
+  },
+  "homepage": "https://github.com/wtesler/react-firebase-roles-editor",
+  "keywords": [
+    "react",
+    "cms",
+    "firestore",
+    "editor"
+  ],
+  "scripts": {
+    "build": "npm run clean && babel src/lib --out-dir dist --copy-files",
+    "clean": "rimraf dist",
+    "test-env": "react-scripts start"
+  },
+  "dependencies": {
+    "firebase": "^9",
+    "query-string": "^7",
+    "react-basic-icon": "^1.0.8",
+    "react-forms-input": "^1.0.4",
+    "react-hoc-di": "^1.1.6",
+    "react-root-overlays": "^1.0.6",
+    "superagent": "^6"
+  },
+  "peerDependencies": {
+    "react": "^17",
+    "react-dom": "^17",
+    "react-router-dom": "^5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
+    "rimraf": "3.0.2",
+    "react-scripts": "4.0.3",
+    "react": "^17",
+    "react-dom": "^17",
+    "react-router-dom": "^5"
+  },
+  "optionalDependencies": {},
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "entry",
+          "corejs": 3
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": []
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.25%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

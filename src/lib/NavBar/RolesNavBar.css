@@ -1,0 +1,17 @@
+.RolesNavBarOuter {
+    width: 100%;
+    height: 80px;
+}
+
+.RolesNavBar {
+    width: 100%;
+    height: 80px;
+    padding: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.47);
+    background-color: #1d1d1d;
+}
