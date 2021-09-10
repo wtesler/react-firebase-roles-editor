@@ -1,6 +1,6 @@
 {
   "name": "react-firebase-roles-editor",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "An editor for firebase-roles. Edit roles from the web. Easily integrate this into your own react website.",
   "author": "Will Tesler",
   "license": "Apache-2.0",
@@ -11,8 +11,10 @@
   "homepage": "https://github.com/wtesler/react-firebase-roles-editor",
   "keywords": [
     "react",
-    "cms",
+    "roles",
+    "claims",
     "firestore",
+    "firebase",
     "editor"
   ],
   "scripts": {
@@ -25,6 +27,7 @@
     "query-string": "^7",
     "react-basic-icon": "^1.0.8",
     "react-forms-input": "^1.0.4",
+    "react-firebase-login": "1.0.3",
     "react-hoc-di": "^1.1.6",
     "react-root-overlays": "^1.0.6",
     "superagent": "^6"

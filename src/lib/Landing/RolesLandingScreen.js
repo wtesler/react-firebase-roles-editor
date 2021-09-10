@@ -9,7 +9,7 @@ import {Requests} from '../Requests/Requests';
 
 const RolesLandingScreen = props => {
   const {module, headerClass} = props;
-  const {toastRelay, serverClient} = module;
+  const {toastRelay, rolesServerClient} = module;
 
   const [users, setUsers] = useState(null);
 
@@ -17,7 +17,7 @@ const RolesLandingScreen = props => {
 
   const readUserRoles = useCallback(async () => {
     try {
-      const users = await serverClient.readUserRoles(requestsRef.current);
+      const users = await rolesServerClient.readUserRoles(requestsRef.current);
       console.log(users);
       setUsers(users);
     } catch (e) {
@@ -28,7 +28,7 @@ const RolesLandingScreen = props => {
       }
       toastRelay.show(msg, true);
     }
-  }, [toastRelay, requestsRef, serverClient]);
+  }, [toastRelay, requestsRef, rolesServerClient]);
 
   useEffect(() => {
     readUserRoles();

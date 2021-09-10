@@ -10,7 +10,7 @@ const RolesScreen = import('firestore-roles-editor');
 // ...
 // Route to it
 // ...
-<Route path={ROUTE_CMS}><RolesScreen/></Route>
+<Route path={ROUTE_ROLE}><RolesScreen/></Route>
 ```
 
 ### Firebase config for test environment:
@@ -18,6 +18,12 @@ const RolesScreen = import('firestore-roles-editor');
 See `FIREBASE_CONFIG_README.md` in `src/Config`.
 
 You add the config file `FIREBASE_CONFIG.json` at that level.
+
+That config file gets ignored by version control.
+
+See `SERVER_CONFIG_README.md` in `src/Config`.
+
+You add the config file `SERVER_CONFIG.json` at that level.
 
 That config file gets ignored by version control.
 
