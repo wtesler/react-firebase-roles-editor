@@ -27,7 +27,7 @@
     "query-string": "^7",
     "react-basic-icon": "^1.0.8",
     "react-forms-input": "^1.0.4",
-    "react-firebase-login": "1.0.3",
+    "react-firebase-login": "1.0.8",
     "react-hoc-di": "^1.1.6",
     "react-root-overlays": "^1.0.6",
     "superagent": "^6"
