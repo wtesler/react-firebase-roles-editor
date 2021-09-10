@@ -1,6 +1,6 @@
 {
   "name": "react-firebase-roles-editor",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An editor for firebase-roles. Edit roles from the web. Easily integrate this into your own react website.",
   "author": "Will Tesler",
   "license": "Apache-2.0",
@@ -24,10 +24,11 @@
   },
   "dependencies": {
     "firebase": "^9",
+    "firebase-login-manager": "^1.1.1",
     "query-string": "^7",
     "react-basic-icon": "^1.0.8",
     "react-forms-input": "^1.0.4",
-    "react-firebase-login": "^1.0.8",
+    "react-firebase-login": "^1.0.9",
     "react-hoc-di": "^1.1.6",
     "react-root-overlays": "^1.0.6",
     "superagent": "^6"

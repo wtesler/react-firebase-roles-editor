@@ -6,6 +6,7 @@ import {
 import RolesNavBar from '../NavBar/RolesNavBar';
 import {withModule} from 'react-hoc-di';
 import {Requests} from '../Requests/Requests';
+import RolesItem from "./Item/RolesItem";
 
 const RolesLandingScreen = props => {
   const {module, headerClass} = props;
@@ -22,10 +23,7 @@ const RolesLandingScreen = props => {
       setUsers(users);
     } catch (e) {
       console.error(e);
-      let msg = FAILED_LOAD_ROLES;
-      if (e.code && e.code === 403) {
-        msg = ACCESS_DENIED;
-      }
+      const msg = e.code && e.code === 403 ? ACCESS_DENIED : FAILED_LOAD_ROLES;
       toastRelay.show(msg, true);
     }
   }, [toastRelay, requestsRef, rolesServerClient]);
@@ -48,11 +46,7 @@ const RolesLandingScreen = props => {
 
     const userElements = [];
     for (const user of users) {
-      userElements.push((
-        <div className={'RolesLandingScreenSectionOuter'} key={user.uid}>
-          {user.email}
-        </div>
-      ))
+      userElements.push(<RolesItem user={user} key={user.uid}/>);
     }
 
     return (

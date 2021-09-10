@@ -1,0 +1,74 @@
+.RolesItemOuter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #2b2b2b;
+    margin-top: 4px;
+    color: #eaeaea;
+    font-size: 18px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.6);
+}
+
+.RolesItemInner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.RolesItemEmail {
+    width: 250px;
+    max-width: 80%;
+    padding: 12px 6px 12px 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.RolesItemClaims {
+    flex: 1;
+    padding: 8px 12px 8px 6px;
+}
+
+.RolesItemClaimsInputOuter {
+    margin-top: 0 !important;
+}
+
+.RolesItemClaimsInput {
+    margin-top: 0 !important;
+}
+
+.RolesItemActions {
+    display: flex;
+    flex-direction: row;
+}
+
+.RolesItemActionItem {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px 5px;
+    user-select: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+@media (hover: hover) {
+    .RolesItemActionItem:hover {
+        filter: brightness(110%);
+    }
+}
+
+.RolesItemActionCancel {
+
+}
+
+.RolesItemActionSave {
+    background-color: green;
+}

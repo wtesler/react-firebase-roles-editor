@@ -11,7 +11,7 @@ const request = require('superagent');
 
 export class ServerClient {
   static READ_USER_ROLES = 'readUserRolesAuthorized';
-  static UPDATE_USER_ROLE = 'updateUserRoleAuthorized';
+  static UPDATE_USER_ROLE = 'updateUserRolesAuthorized';
 
   host = null; // Set in RolesScreen.js from a prop.
 
@@ -33,18 +33,10 @@ export class ServerClient {
     this.firebaseListenerCancellable();
   }
 
-  async getIdToken() {
-    await this.userPromise;
-    if (!this.user) {
-      return null;
-    }
-    return this.user.getIdToken(false);
-  }
-
   async readUserRoles(requests) {
     const endpoint = ServerClient.READ_USER_ROLES;
 
-    const idToken = await this.getIdToken();
+    const idToken = await this._getIdToken();
 
     const req = request
       .get(this.host + endpoint)
@@ -68,7 +60,7 @@ export class ServerClient {
   async updateUserRole(uid, roles, requests) {
     const endpoint = ServerClient.UPDATE_USER_ROLE;
 
-    const idToken = await this.getIdToken();
+    const idToken = await this._getIdToken();
 
     const req = request
       .post(this.host + endpoint)
@@ -89,5 +81,13 @@ export class ServerClient {
     } catch (e) {
       errorThrowsBody(endpoint, e);
     }
+  }
+
+  async _getIdToken() {
+    await this.userPromise;
+    if (!this.user) {
+      return null;
+    }
+    return this.user.getIdToken(false);
   }
 }
