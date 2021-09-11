@@ -2,10 +2,6 @@ import toResilient from './Helpers/toResilient';
 import toSuccessResponse from './Helpers/toSuccessResponse';
 import errorThrowsBody from './Helpers/errorThrowsBody';
 import toAuthorized from './Helpers/toAuthorized';
-import {
-  getAuth,
-  onAuthStateChanged,
-} from 'firebase/auth';
 
 const request = require('superagent');
 
@@ -15,31 +11,25 @@ export class ServerClient {
 
   host = null; // Set in RolesScreen.js from a prop.
 
-  constructor() {
-    this.firebaseAuth = getAuth();
-
-    let outerResolve;
-    this.userPromise = new Promise((resolve, reject) => {
-      outerResolve = resolve;
-    });
-
-    this.firebaseListenerCancellable = onAuthStateChanged(this.firebaseAuth, user => {
-      this.user = user;
-      outerResolve();
-    });
+  constructor(loginManager) {
+    this.loginManager = loginManager;
   }
 
   destruct() {
-    this.firebaseListenerCancellable();
   }
 
-  async readUserRoles(requests) {
+  async readUserRoles(pageToken = undefined, claim = null, email = null, requests) {
     const endpoint = ServerClient.READ_USER_ROLES;
 
     const idToken = await this._getIdToken();
 
     const req = request
       .get(this.host + endpoint)
+      .query({
+        pageToken: pageToken,
+        claim: claim,
+        email: email,
+      })
       .use(toResilient())
       .use(toAuthorized(idToken));
 
@@ -84,10 +74,10 @@ export class ServerClient {
   }
 
   async _getIdToken() {
-    await this.userPromise;
-    if (!this.user) {
+    const user = await this.loginManager.awaitUser();
+    if (!user) {
       return null;
     }
-    return this.user.getIdToken(false);
+    return user.getIdToken(false);
   }
 }

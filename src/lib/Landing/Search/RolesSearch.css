@@ -1,0 +1,89 @@
+.RolesSearchOuter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.RolesSearchInner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.RolesSearchDropdownContainer {
+    width: 100px;
+    margin-right: 2px;
+    z-index: 2;
+}
+
+.RolesSearchInputContainer {
+    flex: 1;
+    padding: 1px 0;
+}
+
+.RolesSearchButtonContainer {
+    width: 42px;
+    height: auto;
+    margin: .5px 0 .5px 2px;
+}
+
+.RolesSearchDropdownOuter {
+    margin: 0 !important;
+}
+
+.RolesSearchDropdownTitle {
+    margin: 0 !important;
+}
+
+.RolesSearchInput {
+    width: 100%;
+    height: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    padding-left: 10px;
+}
+
+.RolesSearchButtonOuter {
+    width: 100%;
+    height: 100%;
+    background-color: #3193d7;
+    align-self: center;
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (hover: hover) {
+    .RolesSearchButtonOuter:hover {
+        filter: brightness(110%);
+    }
+}
+
+.RolesSearchButtonIcon {
+    width: 25px;
+}
+
+.RolesSearchClear {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6d0303;
+    user-select: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+@media (hover: hover) {
+    .RolesSearchClear:hover {
+        filter: brightness(110%);
+    }
+}

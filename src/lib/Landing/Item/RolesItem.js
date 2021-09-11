@@ -2,7 +2,7 @@ import './RolesItem.css';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {withModule} from 'react-hoc-di';
 import {Requests} from '../../Requests/Requests';
-import {ACCESS_DENIED, FAILED_UPDATE_ROLE, SAVING} from "../../Constants/i18n";
+import {ACCESS_DENIED, FAILED_UPDATE_ROLE, SAVE, SAVING} from "../../Constants/i18n";
 import {BasicInput} from "react-forms-input";
 
 const RolesItem = props => {
@@ -83,7 +83,7 @@ const RolesItem = props => {
         {/*  {'Cancel'}*/}
         {/*</div>*/}
         <div className={`RolesItemActionSave RolesItemActionItem`} onClick={updateUserRole}>
-          {'Save'}
+          {SAVE}
         </div>
       </div>
     )
