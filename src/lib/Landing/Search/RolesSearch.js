@@ -1,6 +1,6 @@
 import './RolesSearch.css';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
-import {BasicInput, InputDropdown} from "react-forms-input";
+import {InputDropdown} from "react-forms-input";
 import {CLEAR_FILTER, FILTER} from "../../Constants/i18n";
 import {Icon} from "react-basic-icon";
 import arrow_right_image from "../../Images/arrow_right.svg";

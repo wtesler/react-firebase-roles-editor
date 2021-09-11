@@ -18,7 +18,7 @@ export class ServerClient {
   destruct() {
   }
 
-  async readUserRoles(pageToken = undefined, claim = null, email = null, requests) {
+  async readUserRoles(pageToken = undefined, claim = null, email = null, count = 50, requests) {
     const endpoint = ServerClient.READ_USER_ROLES;
 
     const idToken = await this._getIdToken();
@@ -29,6 +29,7 @@ export class ServerClient {
         pageToken: pageToken,
         claim: claim,
         email: email,
+        count: count,
       })
       .use(toResilient())
       .use(toAuthorized(idToken));
@@ -40,8 +41,7 @@ export class ServerClient {
     try {
       const networkResponse = await req;
       const serverResponse = toSuccessResponse(networkResponse);
-      const users = serverResponse.users;
-      return users;
+      return serverResponse;
     } catch (e) {
       errorThrowsBody(endpoint, e);
     }

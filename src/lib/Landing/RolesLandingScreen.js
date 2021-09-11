@@ -8,28 +8,33 @@ import {withModule} from 'react-hoc-di';
 import {Requests} from '../Requests/Requests';
 import RolesItem from "./Item/RolesItem";
 import RolesSearch from "./Search/RolesSearch";
+import RolesPagination from "./Pagination/RolesPagination";
 
 const RolesLandingScreen = props => {
   const {module} = props;
   const {toastRelay, rolesServerClient} = module;
 
   const [users, setUsers] = useState(null);
+  const [pageToken, setPageToken] = useState(undefined);
+  const [prevPageToken, setPrevPageToken] = useState(undefined);
+  const [pageTokenHistory, setPageTokenHistory] = useState([]);
 
   const requestsRef = useRef(new Requests());
 
-  const readUserRoles = useCallback(async (pageToken = undefined, claim = null, email = null) => {
+  const readUserRoles = useCallback(async (token = undefined, claim = null, email = null) => {
     try {
       toastRelay.show(LOADING, true);
-      const users = await rolesServerClient.readUserRoles(pageToken, claim, email, requestsRef.current);
+      const {users, pageToken} = await rolesServerClient.readUserRoles(token, claim, email, 20, requestsRef.current);
       toastRelay.show(null);
       setUsers(users);
+      setPageToken(pageToken);
     } catch (e) {
       console.error(e);
       toastRelay.show(null);
       const msg = e.code && e.code === 403 ? ACCESS_DENIED : FAILED_LOAD_ROLES;
       toastRelay.show(msg, true);
     }
-  }, [toastRelay, requestsRef, rolesServerClient]);
+  }, [toastRelay, rolesServerClient]);
 
   useEffect(() => {
     readUserRoles(undefined, null, null);
@@ -42,9 +47,23 @@ const RolesLandingScreen = props => {
     }
   }, [requestsRef]);
 
-  const onSubmit = useCallback((claim, email) => {
+  const onSearchSubmit = useCallback((claim, email) => {
+    setPageTokenHistory([]);
     readUserRoles(undefined, claim, email);
   }, [readUserRoles]);
+
+  const onPage = useCallback(isForward => {
+    let token = pageToken;
+    if (isForward) {
+      pageTokenHistory.push(prevPageToken);
+      setPrevPageToken(token);
+    } else {
+      token = pageTokenHistory.pop();
+      setPrevPageToken(token);
+    }
+    setPageTokenHistory(pageTokenHistory);
+    readUserRoles(token, null, null);
+  }, [pageToken, pageTokenHistory, readUserRoles, prevPageToken]);
 
   const mainContent = useMemo(() => {
     if (!users) {
@@ -60,13 +79,16 @@ const RolesLandingScreen = props => {
       <div id='RolesLandingScreenBodyOuter'>
         <div id='RolesLandingScreenBody'>
           <div id='RolesLandingScreenSearchContainer'>
-            <RolesSearch onSubmit={onSubmit}/>
+            <RolesSearch onSubmit={onSearchSubmit}/>
           </div>
           {userElements}
+          <div id='RolesLandingScreenPaginationContainer'>
+            <RolesPagination pageToken={pageToken} pageTokenHistory={pageTokenHistory} onPage={onPage}/>
+          </div>
         </div>
       </div>
     );
-  }, [users, onSubmit]);
+  }, [users, pageToken, pageTokenHistory, onPage, onSearchSubmit]);
 
   return (
     <div id='RolesLandingScreen'>

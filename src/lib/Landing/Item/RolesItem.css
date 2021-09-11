@@ -20,8 +20,7 @@
 }
 
 .RolesItemEmail {
-    width: 250px;
-    max-width: 80%;
+    width: 270px;
     padding: 12px 6px 12px 12px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -41,7 +40,6 @@
 
     .RolesItemEmail {
         width: 100%;
-        max-width: unset;
     }
 
     .RolesItemClaims {
