@@ -1,6 +1,6 @@
 {
   "name": "react-firebase-roles-editor",
-  "version": "1.1.4",
+  "version": "1.1.8",
   "description": "An editor for firebase-roles. Edit roles from the web. Easily integrate this into your own react website.",
   "author": "Will Tesler",
   "license": "Apache-2.0",
@@ -24,29 +24,28 @@
     "test-env": "react-scripts start"
   },
   "dependencies": {
-    "firebase-login-manager": "^1.1.1",
-    "react-basic-icon": "^1.0.8",
-    "react-forms-input": "^1.0.4",
-    "react-firebase-login": "^1.1.9",
-    "react-hoc-di": "^1.1.7",
-    "react-root-overlays": "^1.0.9",
+    "firebase-login-manager": "^1.1.5",
+    "react-basic-icon": "^1.1.4",
+    "react-forms-input": "^1.2.0",
+    "react-firebase-login": "^1.2.2",
+    "react-hoc-di": "^1.1.9",
+    "react-root-overlays": "^1.1.1",
     "superagent": "^6"
   },
   "peerDependencies": {
-    "react": "^17",
-    "react-dom": "^17",
-    "react-router-dom": "^5"
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router-dom": "^6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.5",
-    "@babel/core": "^7.14.5",
-    "@babel/preset-env": "^7.14.5",
-    "@babel/preset-react": "^7.14.5",
-    "firebase": "^9.6.5",
-    "react": "^17",
-    "react-dom": "^17",
-    "react-router-dom": "^5",
-    "react-scripts": "5.0.0",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-react": "^7.16.7",
+    "firebase": "^9",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router-dom": "^6",
+    "react-scripts": "^5.0.0",
     "rimraf": "3.0.2"
   },
   "optionalDependencies": {},

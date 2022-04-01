@@ -4,12 +4,14 @@ import {withModule} from 'react-hoc-di';
 import RolesModule from './Module/RolesModule';
 import {RootOverlays} from 'react-root-overlays';
 import RolesLandingScreen from './Landing/RolesLandingScreen';
-import {withRouter} from 'react-router-dom';
+import {useMatch} from 'react-router-dom';
 import {LoginPortal} from 'react-firebase-login';
 
 const RolesScreen = props => {
-  const {host, module, match} = props;
+  const {host, module} = props;
   const {rolesServerClient} = module;
+
+  const match = useMatch();
 
   if (match.isExact) {
     module.rootPath = match.path;
@@ -32,4 +34,4 @@ const RolesScreen = props => {
   );
 }
 
-export default withRouter(withModule(RolesScreen, RolesModule));
+export default withModule(RolesScreen, RolesModule);
