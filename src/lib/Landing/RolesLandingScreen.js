@@ -1,7 +1,7 @@
 import './RolesLandingScreen.css';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {
-  ACCESS_DENIED, FAILED_LOAD_ROLES, LOADING
+  ACCESS_DENIED, LOADING
 } from '../Constants/i18n';
 import RolesNavBar from '../NavBar/RolesNavBar';
 import {withModule} from 'react-hoc-di';
@@ -31,8 +31,15 @@ const RolesLandingScreen = props => {
     } catch (e) {
       console.error(e);
       toastRelay.show(null);
-      const msg = e.code && e.code === 403 ? ACCESS_DENIED : FAILED_LOAD_ROLES;
-      toastRelay.show(msg, true);
+      const accessDenied = e.code === 403;
+      const isImproperEmail = e.message && e.message.includes('auth/invalid-email');
+      if (accessDenied) {
+        toastRelay.show(ACCESS_DENIED, true);
+      } else if (isImproperEmail) {
+        toastRelay.show('Email not formatted properly', false, 3000);
+      } else {
+        toastRelay.show('Something went wrong. Try again.', false, 3000);
+      }
     }
   }, [toastRelay, rolesServerClient]);
 

@@ -5,7 +5,6 @@ const RolesModule = (rootModule) => {
   const loginManager = new LoginManager(false);
 
   const module = {
-    match: null,
     rolesServerClient: new ServerClient(loginManager),
     rolesLoginManager: loginManager,
   };

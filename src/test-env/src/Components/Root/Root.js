@@ -9,7 +9,7 @@ import RolesScreen from "../../../../lib/index";
  * Top-Level Component for the App.
  */
 const Root = () => {
-  const path = '/roles';
+  const path = '/roles/*';
 
   const withSuspense = (component) => {
     return (

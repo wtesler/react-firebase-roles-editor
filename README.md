@@ -10,7 +10,7 @@ const RolesScreen = import('firestore-roles-editor');
 // ...
 // Route to it
 // ...
-<Route path={ROUTE_ROLE}><RolesScreen/></Route>
+<Route path={`${ROUTE_ROLE}/*`><RolesScreen/></Route>
 ```
 
 ### Firebase config for test environment:

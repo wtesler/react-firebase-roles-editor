@@ -1,7 +1,6 @@
 export let ACCESS_DENIED = 'Access Denied.';
 export let CLEAR_FILTER = 'Clear Filter';
 export let EDIT_ROLES = 'Edit Roles';
-export let FAILED_LOAD_ROLES = 'Failed to load user roles. Try reloading the page.';
 export let FAILED_UPDATE_ROLE = 'Failed to update user role. Please try again.';
 export let FILTER = 'Filter';
 export let LOADING = 'Loading...';

@@ -35,6 +35,12 @@ const RolesSearch = props => {
     setDirty(true);
   }, [value, onSubmit]);
 
+  const onKeyDown = useCallback((event) => {
+    if (event.key === 'Enter') {
+      onSubmitClick();
+    }
+  }, [onSubmitClick]);
+
   const onClearClick = useCallback(() => {
     onSubmit(null, null);
     setValue('');
@@ -72,6 +78,7 @@ const RolesSearch = props => {
             onChange={onInputChange}
             spellCheck={false}
             autoComplete={'off'}
+            onKeyDown={onKeyDown}
           />
         </div>
         <div className={`RolesSearchButtonContainer`}>
