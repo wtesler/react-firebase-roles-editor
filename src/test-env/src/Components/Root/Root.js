@@ -1,6 +1,6 @@
 import React from 'react';
 import './Root.css';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import FirebaseStartup from "./Firebase/FirebaseStartup";
 import serverConfig from "../../Config/SERVER_CONFIG.json";
 import RolesScreen from "../../../../lib/index";
@@ -14,10 +14,10 @@ const Root = () => {
     <div id='Root'>
       <FirebaseStartup/>
       <BrowserRouter>
-        <Switch>
+        <Routes>
           <Route path={path}><RolesScreen host={serverConfig.host}/></Route>
           <Route>{`Go to ${path}`}</Route>
-        </Switch>
+        </Routes>
       </BrowserRouter>
     </div>
   );
